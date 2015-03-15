@@ -1,0 +1,15 @@
+{
+  "name": "reddit",
+  "version": "1.0.0",
+  "description": "Reddit with Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Rubén Mayayo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.12.2",
+    "mocha": "^2.2.1"
+  }
+}
