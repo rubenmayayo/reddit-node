@@ -1,7 +1,9 @@
 html
-  head
-  body
-    ul
-        each story in stories
-            li= story.data.title
+	head
+	body
+		ul
+			each story in data.children
+				li
+					a(href='#{story.data.url}') #{story.data.title}
 
+		a(href='/r/#{subreddit}/?after=#{data.after}') Next

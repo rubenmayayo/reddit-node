@@ -6,22 +6,20 @@ app = express();
 app.set('views', './views');
 app.set('view engine', 'jade');	
 
-app.get('/:subreddit', function(req, res) {
+app.get('/r/:subreddit', function(req, res) {
 
-	var subreddit = req.params.subreddit
+	var subreddit = req.params.subreddit;
+	
+	after = req.query.after;
 
-	new Reddit().top().getStories(subreddit, function(err, stories) {
+	new Reddit().r(subreddit).new().getStories(after, function(err, data) {
 
-		if(err) {
-			return res.status(500).json({success:false, reason: 'Message'});
-		}
-
-		res.render('index', {stories: stories});
+		res.render('index', {data: data, subreddit: subreddit});
 
 	});
 
 })
 
 app.listen(8000, function() {
-	console.log('listening on port 8000');
+	console.log('Listening on port 8000');
 });
